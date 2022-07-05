@@ -42,6 +42,62 @@ d2.place(relx=0.4,rely=0.85,anchor=CENTER)
 d3.place(relx=0.6,rely=0.85,anchor=CENTER)
 d4.place(relx=0.8,rely=0.85,anchor=CENTER)
 
+keypress=""
+oldx=0
+oldy=0
+newx=0
+newy=0
+
+def circle(event):
+    global oldx
+    global oldy
+    global newx
+    global newy
+    oldx=d1.get()
+    oldy=d2.get()
+    newx=d3.get()
+    newy=d4.get()
+    keypress="c"
+    draw(keypress,oldx,oldy,newx,newy)
+
+def rectangle(event):
+    global oldx
+    global oldy
+    global newx
+    global newy
+    oldx=d1.get()
+    oldy=d2.get()
+    newx=d3.get()
+    newy=d4.get()
+    keypress="r"
+    draw(keypress,oldx,oldy,newx,newy)
+
+def line(event):
+    global oldx
+    global oldy
+    global newx
+    global newy
+    oldx=d1.get()
+    oldy=d2.get()
+    newx=d3.get()
+    newy=d4.get()
+    keypress="l"
+    draw(keypress,oldx,oldy,newx,newy)
+
+def draw(keypress,oldx,oldy,newx,newy):
+    fill_color=Colors_dropdown.get()
+    if(keypress=="c"):
+        circle=canvas.create_oval(oldx,oldy,newx,newy,width = 3,fill = fill_color)
+    if(keypress=="r"):
+        rectangle=canvas.create_rectangle(oldx,oldy,newx,newy,width = 3,fill = fill_color)
+    if(keypress=="l"):
+        line = canvas.create_line(oldx,oldy,newx,newy,width = 2,fill = fill_color)
+    
+        
+root.bind("<c>",circle)
+root.bind("<r>",rectangle)
+root.bind("<l>",line)
+
 root.mainloop()
 
 
